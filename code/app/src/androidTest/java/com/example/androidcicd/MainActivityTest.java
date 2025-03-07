@@ -103,6 +103,12 @@ public class MainActivityTest {
 
     @Test
     public void appShouldDisplayExistingMoviesOnLaunch() {
+        try {
+            Thread.sleep(2000); // Wait 2 seconds (adjust if needed)
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         // Check that the initial data is loaded
         onView(withText("Oppenheimer")).check(matches(isDisplayed()));
         onView(withText("Barbie")).check(matches(isDisplayed()));
@@ -128,7 +134,7 @@ public class MainActivityTest {
 
     @After
     public void tearDown() {
-        String projectId = "YOUR-PROJECT-ID";
+        String projectId = "lab08thurs";
         URL url = null;
         try {
             url = new URL("http://10.0.2.2:8080/emulator/v1/projects/" + projectId + "/databases/(default)/documents");
